@@ -20,8 +20,24 @@
 */
 
 //CODE HERE
+class Employee {
+    constructor(name, shifts) {
+        this.name = name;
+        this.shifts = shifts;
+    }
 
+    getSchedule() {
+        console.log(`${this.name} works on ${this.shifts}`);
+    }
+}
+const employee1 = new Employee('John', 'Monday, Wednesday, Friday');
+const employee2 = new Employee('Alice', 'Tuesday, Thursday, Saturday');
 
+console.log('Employee 1 Schedule:');
+employee1.getSchedule(); 
+
+console.log('Employee 2 Schedule:');
+employee2.getSchedule(); 
 
 /*
     Create a new instance of your class.
@@ -34,6 +50,8 @@
 */
 
 //CODE HERE
+const empOne = new Employee('Jess', 'weekday mornings, weekday afternoons');
+console.log('Employee One Schedule:');
 
 /*
     Call the `getSchedule` method on the
@@ -41,7 +59,7 @@
 */
 
 //CODE HERE
-
+empOne.getSchedule();
 
 /*
     Make a copy of the empOne object
@@ -56,8 +74,9 @@
 */
 
 //CODE HERE
-
-
+const empTwo = { ...empOne, name: 'Nick' };
+console.log('Employee Two Schedule:');
+empTwo.getSchedule();
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -83,8 +102,30 @@
 */
 
 //CODE HERE
+class Manager extends Employee {
+    constructor(name, shifts, employees) {
+        super(name, shifts);
+    }
 
+    getEmployees() {
+        console.log(`${this.name} manages ${this.employees.join(', ')}`);
+    }
 
+    addEmployee(emp) {
+        this.employees.push(emp);
+    }
+}
+
+const manager1 = new Manager('Alex', 'weekday mornings', ['John', 'Alice']);
+console.log('Manager 1 Schedule:');
+manager1.getSchedule();
+
+console.log('Manager 1 Employees:');
+manager1.getEmployees();
+
+manager1.addEmployee('Bob');
+console.log('Manager 1 Updated Employees:');
+manager1.getEmployees();
 
 /*
     Create a new instance of your class.
@@ -98,15 +139,20 @@
 */
 
 //CODE HERE
+const manager = new Manager('Winston', 'weekday mornings, weekday afternoons', ['Cece', 'Schmidt']);
+console.log('Manager Schedule:');
+manager.getSchedule(); 
 
-
+console.log('Manager Employees:');
+manager.getEmployees();
 /*
     Call the `getEmployees` method on the
     `manager` object.  
 */
 
 //CODE HERE
-
+console.log('Manager Employees:');
+manager.getEmployees();
 /*
     Call the `addEmployee` method on the 
     `manager` object passing in the string 
@@ -114,6 +160,9 @@
 */
 
 //CODE HERE 
+manager.addEmployee('Coach');
+console.log('\nManager Updated Employees:');
+manager.getEmployees();
 
 /*
     Call the `getEmployees` method on the
@@ -122,3 +171,5 @@
 */
 
 //CODE HERE
+console.log('\nManager Updated Employees:');
+manager.getEmployees();

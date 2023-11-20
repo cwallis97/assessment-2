@@ -31,8 +31,15 @@
 */
 
 //CODE HERE
-
-
+const pizza = {
+    name: 'Margherita',
+    price: 12.99,
+    category: 'entree',
+    popularity: 8,
+    rating: 4.5,
+    tags: ['vegetarian', 'classic', 'italian']
+};
+console.log(pizza);
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -43,7 +50,7 @@
 */
 
 //CODE HERE
-
+console.log(pizza.popularity);
 
 /*
     Second, log the second tag in your pizza's
@@ -53,7 +60,7 @@
 */
 
 //CODE HERE
-
+console.log(pizza.tags[1]);
 
 /*
     Third, destructure the price off of the
@@ -63,7 +70,9 @@
 */
 
 //CODE HERE
+const { price } = pizza;
 
+console.log(price);
 
 /*
     Fourth, and last, destructure the category
@@ -73,7 +82,9 @@
 */
 
 //CODE HERE
+const { category } = pizza;
 
+console.log(category);
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -88,8 +99,50 @@
 */
 
 //CODE HERE
+const foodArr = [
+    {
+        name: 'Pasta',
+        price: 14.99,
+        category: 'entree',
+        popularity: 7,
+        rating: 4.2,
+        tags: ['alfrado', 'pasta', 'italian']
+    },
+    {
+        name: 'Chicken Salad',
+        price: 9.49,
+        category: 'appetizer',
+        popularity: 6,
+        rating: 4.0,
+        tags: ['salad', 'chicken', 'healthy']
+    },
+    {
+        name: 'Cheeseburger',
+        price: 11.99,
+        category: 'entree',
+        popularity: 8,
+        rating: 4.5,
+        tags: ['burger', 'american', 'classic']
+    },
+    {
+        name: 'Shrimp Tacos',
+        price: 13.99,
+        category: 'entree',
+        popularity: 9,
+        rating: 4.8,
+        tags: ['tacos', 'seafood', 'mexican']
+    },
+    {
+        name: 'Chocolate Cake',
+        price: 7.99,
+        category: 'dessert',
+        popularity: 5,
+        rating: 3.7,
+        tags: ['cake', 'chocolate', 'sweet']
+    }
+];
 
-
+console.log(foodArr);
 
 //////////////////PROBLEM 4////////////////////
 /* 
@@ -104,8 +157,11 @@
 */
 
 //CODE HERE
-
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filterByTag = (foodArray, tagToFilter) => {
+    return foodArray.filter(food => food.tags.includes(tagToFilter));
+};
+const filteredFood = foodArr.filter(food => food.tags.includes('italian'));
+console.log(filteredFood);
 
 
 
@@ -149,7 +205,18 @@
 */
 
 //CODE HERE
+const filterByProperty = (property, number, type) => {
+    return foodArr.filter(food => {
+        if (type === 'above') {
+            return food[property] > number;
+        } else if (type === 'below') {
+            return food[property] < number;
+        } else {
 
+            return [];
+        }
+    });
+};
 
 /*
     Invoke the `filterByProperty` function passing
@@ -159,3 +226,8 @@
 */
 
 //CODE HERE
+const highRatedFood = filterByProperty('rating', 4.5, 'above');
+console.log('High-rated Food:', highRatedFood);
+
+const affordableFood = filterByProperty('price', 10.0, 'below');
+console.log('Affordable Food:', affordableFood);
